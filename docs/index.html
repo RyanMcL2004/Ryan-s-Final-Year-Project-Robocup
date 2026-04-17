@@ -1,24 +1,177 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>RoboCup Analysis Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RoboCup Tactical Analysis</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #17202a;
+      --muted: #5f6b7a;
+      --border: #d9e1ea;
+      --accent: #1f6feb;
+      --accent-hover: #1558b0;
+      --shadow: 0 10px 30px rgba(23, 32, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 48px auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.2rem;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .note {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: #eef5ff;
+      border: 1px solid #cfe0ff;
+      border-radius: 12px;
+      color: #234;
+      font-size: 0.96rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.4rem;
+    }
+
+    .card p {
+      margin-top: 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .links {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .link-btn {
+      display: block;
+      text-decoration: none;
+      background: var(--accent);
+      color: white;
+      padding: 13px 16px;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .link-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 24px;
+      padding-bottom: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        margin: 24px auto;
+      }
+
+      .hero, .card {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <section class="hero">
+      <h1>RoboCup Tactical Analysis</h1>
+      <p class="subtitle">
+        Interactive reports comparing baseline HELIOS performance against Ryan_FC.
+      </p>
+      <div class="note">
+        These reports are self-contained and can be viewed directly in the browser without running any scripts.
+      </div>
+    </section>
 
-<h1>RoboCup Tactical Analysis</h1>
-<p>Interactive reports comparing baseline Helios and Ryan_FC performance.</p>
+    <section class="grid">
+      <article class="card">
+        <h2>Baseline: HELIOS vs HELIOS</h2>
+        <p>
+          Control reports used as a baseline for comparison.
+        </p>
+        <div class="links">
+          <a class="link-btn" href="helios_vs_helios_15.html">15 Game Analysis</a>
+          <a class="link-btn" href="helios_vs_helios_150.html">150 Game Aggregate</a>
+        </div>
+      </article>
 
-<h2>Baseline (Helios vs Helios)</h2>
-<ul>
-  <li><a href="helios_vs_helios_15.html">15 Game Analysis</a></li>
-  <li><a href="helios_vs_helios_150.html">150 Game Aggregate</a></li>
-</ul>
+      <article class="card">
+        <h2>Ryan_FC vs HELIOS</h2>
+        <p>
+          Experimental reports showing the performance of the modified tactical system.
+        </p>
+        <div class="links">
+          <a class="link-btn" href="ryanfc_vs_helios_15.html">15 Game Analysis</a>
+          <a class="link-btn" href="ryanfc_vs_helios_150.html">150 Game Aggregate</a>
+        </div>
+      </article>
+    </section>
 
-<h2>Ryan_FC vs Helios</h2>
-<ul>
-  <li><a href="ryanfc_vs_helios_15.html">15 Game Analysis</a></li>
-  <li><a href="ryanfc_vs_helios_150.html">150 Game Aggregate</a></li>
-</ul>
-
+    <div class="footer">
+      Final Year Project — RoboCup 2D Tactical Analysis
+    </div>
+  </div>
 </body>
 </html>
