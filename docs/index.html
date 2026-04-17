@@ -13,10 +13,13 @@
       --border: #d9e1ea;
       --accent: #1f6feb;
       --accent-hover: #1558b0;
+      --accent-soft: #eef5ff;
       --shadow: 0 10px 30px rgba(23, 32, 42, 0.08);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -27,7 +30,7 @@
     }
 
     .container {
-      max-width: 980px;
+      max-width: 1050px;
       margin: 48px auto;
       padding: 0 20px;
     }
@@ -35,63 +38,73 @@
     .hero {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 32px;
       box-shadow: var(--shadow);
       margin-bottom: 24px;
     }
 
     h1 {
-      margin: 0 0 10px 0;
-      font-size: 2.2rem;
+      margin: 0 0 12px 0;
+      font-size: 2.3rem;
     }
 
     .subtitle {
       margin: 0;
       color: var(--muted);
-      font-size: 1.02rem;
+      font-size: 1.03rem;
+      max-width: 820px;
     }
 
     .note {
-      margin-top: 16px;
+      margin-top: 18px;
       padding: 14px 16px;
-      background: #eef5ff;
+      background: var(--accent-soft);
       border: 1px solid #cfe0ff;
       border-radius: 12px;
-      color: #234;
+      color: #24405f;
       font-size: 0.96rem;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 20px;
     }
 
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 24px;
       box-shadow: var(--shadow);
     }
 
     .card h2 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: 1.4rem;
+      margin: 0 0 8px 0;
+      font-size: 1.45rem;
     }
 
     .card p {
-      margin-top: 0;
+      margin: 0;
       color: var(--muted);
-      font-size: 0.97rem;
+      font-size: 0.98rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 0.82rem;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
     }
 
     .links {
       display: grid;
       gap: 12px;
-      margin-top: 18px;
+      margin-top: 20px;
     }
 
     .link-btn {
@@ -110,11 +123,22 @@
       transform: translateY(-1px);
     }
 
+    .link-btn.secondary {
+      background: #ffffff;
+      color: var(--accent);
+      border: 1px solid var(--border);
+    }
+
+    .link-btn.secondary:hover {
+      background: #f8fbff;
+      color: var(--accent-hover);
+    }
+
     .footer {
       text-align: center;
       color: var(--muted);
       font-size: 0.92rem;
-      margin-top: 24px;
+      margin-top: 26px;
       padding-bottom: 12px;
     }
 
@@ -123,55 +147,72 @@
         margin: 24px auto;
       }
 
-      .hero, .card {
+      .hero,
+      .card {
         padding: 20px;
       }
 
       h1 {
-        font-size: 1.8rem;
+        font-size: 1.85rem;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
+
     <section class="hero">
       <h1>RoboCup Tactical Analysis</h1>
       <p class="subtitle">
-        Interactive reports comparing baseline HELIOS performance against Ryan_FC.
+        Interactive analysis reports for a final year project based on the RoboCup 2D simulation environment.
+        The reports compare baseline HELIOS performance against the modified Ryan_FC team across both short-run
+        and aggregate match sets.
       </p>
       <div class="note">
-        These reports are self-contained and can be viewed directly in the browser without running any scripts.
+        These reports are self-contained and can be viewed directly in the browser without running any scripts or setting up the project locally.
       </div>
     </section>
 
     <section class="grid">
+
       <article class="card">
-        <h2>Baseline: HELIOS vs HELIOS</h2>
+        <div class="section-label">Baseline Comparison</div>
+        <h2>HELIOS vs HELIOS</h2>
         <p>
-          Control reports used as a baseline for comparison.
+          Baseline control reports used to observe the behaviour and performance of the original HELIOS-based system
+          without the proposed tactical modifications.
         </p>
         <div class="links">
           <a class="link-btn" href="helios_vs_helios_15.html">15 Game Analysis</a>
-          <a class="link-btn" href="helios_vs_helios_150.html">150 Game Aggregate</a>
+          <a class="link-btn" href="helios_vs_helios_150.html">150 Game Aggregate Report</a>
+          <a class="link-btn secondary" href="https://www.youtube.com/playlist?list=PLRSbyqbbDxLaG1HWjjxxUaN8I58xMskrS" target="_blank" rel="noopener noreferrer">
+            ▶ Watch Match Recordings (15 Games)
+          </a>
         </div>
       </article>
 
       <article class="card">
+        <div class="section-label">Modified Team Comparison</div>
         <h2>Ryan_FC vs HELIOS</h2>
         <p>
-          Experimental reports showing the performance of the modified tactical system.
+          Experimental reports showing the performance of Ryan_FC, including the impact of the implemented tactical
+          behaviours against the HELIOS baseline team.
         </p>
         <div class="links">
           <a class="link-btn" href="ryanfc_vs_helios_15.html">15 Game Analysis</a>
-          <a class="link-btn" href="ryanfc_vs_helios_150.html">150 Game Aggregate</a>
+          <a class="link-btn" href="ryanfc_vs_helios_150.html">150 Game Aggregate Report</a>
+          <a class="link-btn secondary" href="https://www.youtube.com/playlist?list=PLRSbyqbbDxLaRh27TWh2MU1Gwuss9ty0d" target="_blank" rel="noopener noreferrer">
+            ▶ Watch Match Recordings (15 Games)
+          </a>
         </div>
       </article>
+
     </section>
 
     <div class="footer">
-      Final Year Project — RoboCup 2D Tactical Analysis
+      Final Year Project &mdash; RoboCup 2D Tactical Analysis Dashboard
     </div>
+
   </div>
 </body>
 </html>
