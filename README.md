@@ -7,7 +7,7 @@ Final year project focused on developing and evaluating a custom RoboCup Soccer 
 - `src/` - Custom Ryan FC team source code and configuration files
 - `scripts/` - Scripts used to run matches and experiments
 - `analysis/` - Python scripts used to analyse match results
-- `docs/` - Project documentation and dashboard assets
+- `docs/` - Project dashboard and html files
 - `index.html` - Project dashboard hosted with GitHub Pages
 
 ## External Dependencies
