@@ -32,6 +32,9 @@
 
 #include "bhv_basic_move.h"
 
+#include "basic_actions/body_smart_kick.h"
+#include "basic_actions/body_dribble2008.h"
+
 #include "planner/bhv_planned_action.h"
 #include "basic_actions/body_hold_ball.h"
 #include "basic_actions/neck_scan_field.h"
@@ -43,39 +46,37 @@
 
 using namespace rcsc;
 
-const std::string RoleDefensiveHalf::NAME( "DefensiveHalf" );
+const std::string RoleDefensiveHalf::NAME("DefensiveHalf");
 
 /*-------------------------------------------------------------------*/
 /*!
 
  */
-namespace {
-rcss::RegHolder role = SoccerRole::creators().autoReg( &RoleDefensiveHalf::create,
-                                                       RoleDefensiveHalf::NAME );
+namespace
+{
+    rcss::RegHolder role = SoccerRole::creators().autoReg(&RoleDefensiveHalf::create,
+                                                          RoleDefensiveHalf::NAME);
 }
 
 /*-------------------------------------------------------------------*/
 /*!
 
  */
-bool
-RoleDefensiveHalf::execute( PlayerAgent * agent )
+bool RoleDefensiveHalf::execute(PlayerAgent *agent)
 {
     bool kickable = agent->world().self().isKickable();
-    if ( agent->world().kickableTeammate()
-         && agent->world().teammatesFromBall().front()->distFromBall()
-         < agent->world().ball().distFromSelf() )
+    if (agent->world().kickableTeammate() && agent->world().teammatesFromBall().front()->distFromBall() < agent->world().ball().distFromSelf())
     {
         kickable = false;
     }
 
-    if ( kickable )
+    if (kickable)
     {
-        doKick( agent );
+        doKick(agent);
     }
     else
     {
-        doMove( agent );
+        doMove(agent);
     }
 
     return true;
@@ -85,27 +86,23 @@ RoleDefensiveHalf::execute( PlayerAgent * agent )
 /*!
 
  */
-void
-RoleDefensiveHalf::doKick( PlayerAgent * agent )
+void RoleDefensiveHalf::doKick(PlayerAgent *agent)
 {
-    if ( Bhv_PlannedAction().execute( agent ) )
+    if (Bhv_PlannedAction().execute(agent))
     {
-        dlog.addText( Logger::TEAM,
-                      __FILE__": (execute) do planned action" );
-        agent->debugClient().addMessage( "PlannedAction" );
+        dlog.addText(Logger::TEAM,
+                     __FILE__ ": (execute) do planned action");
+        agent->debugClient().addMessage("PlannedAction");
         return;
     }
-
-    Body_HoldBall().execute( agent );
-    agent->setNeckAction( new Neck_ScanField() );
+    Body_HoldBall().execute(agent);
+    agent->setNeckAction(new Neck_ScanField());
 }
-
 /*-------------------------------------------------------------------*/
 /*!
 
  */
-void
-RoleDefensiveHalf::doMove( PlayerAgent * agent )
+void RoleDefensiveHalf::doMove(PlayerAgent *agent)
 {
-    Bhv_BasicMove().execute( agent );
+    Bhv_BasicMove().execute(agent);
 }
